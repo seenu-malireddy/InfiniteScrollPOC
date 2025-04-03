@@ -9,6 +9,8 @@ import axios from 'axios';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from "react-virtualized-auto-sizer";
 import "../App.css";
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Product {
   id: number;
@@ -42,6 +44,10 @@ const InfiniteScrollListView = () => {
     },
     initialPageParam: 0, 
   });
+
+  const navigate = useNavigate();
+  const { i18n } = useTranslation();
+
 
   const [itemCount, setItemCount] = useState(0);
 
@@ -82,8 +88,10 @@ const InfiniteScrollListView = () => {
           >
             {({ index, style }) => {
               const item = getRowData(index);
+
               return (
-                <div className="list-item" key={item?.id} style={style}>
+                <div className={`list-item ${i18n.language === "ar" ? "rtl" : "ltr"}`} key={item?.id} style={style}
+                onClick={() => item && navigate('/product/'+item.id)} >
                   <div className="w-1/5">
                     <img
                       src={item?.thumbnail} 

@@ -24,6 +24,7 @@ h1 {
 
 .list-item:nth-child(odd) {
   background-color: var(--alt-item-bg1);
+  /* display: none; */
 }
 
 .list-item:nth-child(even) {
@@ -77,6 +78,7 @@ h1 {
   width: 100%; /* Ensure it does not exceed the container */
   box-sizing: border-box;
   border-bottom: 1px solid rgb(134, 134, 134);
+  cursor: pointer;
 }
 
 .text-heading{
@@ -126,3 +128,82 @@ h1 {
   outline: none;
   box-shadow: 0 0 5px var(--item-text-color);
 }
+
+/* Product Detail Page */
+.product-detail-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .product-detail-container {
+  background-color: white;
+  color: black;
+}
+
+[data-theme="dark"] .product-detail-container {
+  background-color: #222;
+  color: white;
+}
+
+.product-detail-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-detail-container img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+[data-theme="dark"] .back-btn {
+  background-color: #1e364e;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+/* RTL & LTR Support */
+html {
+  transition: all 0.3s;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+.list-item.ltr {
+  flex-direction: row; /* Default: Image on the left */
+}
+
+.list-item.rtl {
+  flex-direction: row-reverse; /* RTL: Image on the right */
+}
+
+
